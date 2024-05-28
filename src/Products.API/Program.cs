@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Products.API.Data;
+using Products.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<ProductsDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IProductService, ProductService>();
 
 // Add Swagger services
 builder.Services.AddEndpointsApiExplorer();

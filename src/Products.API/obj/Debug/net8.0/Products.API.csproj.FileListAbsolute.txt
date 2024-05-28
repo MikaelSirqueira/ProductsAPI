@@ -45,6 +45,7 @@ D:\Mike\Documents\Projects\wake\code\Products\src\Products.API\obj\Debug\net8.0\
 D:\Mike\Documents\Projects\wake\code\Products\src\Products.API\obj\Debug\net8.0\Products.API.csproj.CoreCompileInputs.cache
 D:\Mike\Documents\Projects\wake\code\Products\src\Products.API\obj\Debug\net8.0\Products.API.MvcApplicationPartsAssemblyInfo.cs
 D:\Mike\Documents\Projects\wake\code\Products\src\Products.API\obj\Debug\net8.0\Products.API.MvcApplicationPartsAssemblyInfo.cache
+D:\Mike\Documents\Projects\wake\code\Products\src\Products.API\obj\Debug\net8.0\Products.API.sourcelink.json
 D:\Mike\Documents\Projects\wake\code\Products\src\Products.API\obj\Debug\net8.0\staticwebassets.build.json
 D:\Mike\Documents\Projects\wake\code\Products\src\Products.API\obj\Debug\net8.0\staticwebassets.development.json
 D:\Mike\Documents\Projects\wake\code\Products\src\Products.API\obj\Debug\net8.0\staticwebassets\msbuild.Products.API.Microsoft.AspNetCore.StaticWebAssets.props

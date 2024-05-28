@@ -1,29 +1,81 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Products.API.Data;
+using Products.API.Entities;
+using Products.API.Services;
 
-namespace Products.API.Controllers;
-[Route("api/[controller]")]
-[ApiController]
-public class ProductsController : ControllerBase
+namespace Products.API.Controllers
 {
-    private readonly ProductsDbContext _context;
-
-    public ProductsController(ProductsDbContext context)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductsController : ControllerBase
     {
-        _context = context;
-    }
+        private readonly IProductService _productService;
 
-    [HttpGet]
-    public IActionResult GetAll()
-    {
-        var productsList = _context.Products;
-
-        if (productsList == null)
+        public ProductsController(IProductService productService)
         {
-            return NotFound();
+            _productService = productService;
         }
-        
-        return Ok(productsList.ToList());
+
+        [HttpGet]
+        public IActionResult GetAll(string? sortBy, string? searchByName)
+        {
+            var products = _productService.GetAll(sortBy, searchByName);
+            return Ok(products);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var product = _productService.GetById(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(product.FirstOrDefault());
+        }
+
+        [HttpPost]
+        public IActionResult Post(Product product)
+        {
+            try
+            {
+                var createdProduct = _productService.Create(product);
+                return CreatedAtAction(nameof(GetById), new { id = createdProduct.Id }, createdProduct);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Product product)
+        {
+            try
+            {
+                _productService.Update(id, product);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                _productService.Delete(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            };
+        }
     }
 }

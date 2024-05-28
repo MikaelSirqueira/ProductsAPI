@@ -1,1 +1,6 @@
 .vs
+/src/*.db
+bin/
+obj/
+*.log
+*.tmp
