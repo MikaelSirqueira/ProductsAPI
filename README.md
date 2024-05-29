@@ -7,21 +7,21 @@
 - Esta solução contém dois projetos:
     1. **Products.API** - O projeto principal da API.
     2. **Products.API.Test** - O projeto de testes unitários.
-- O projeto está organizado seguindo a Arquitetura em Camadas.
-- O banco de dados está configurado para usar o Entity Framework no modo Code-First, onde o banco é gerado a partir das classes de modelo. O banco de dados é populado ao rodar a aplicação conforme configurado no Data/ProductsDbContext.cs
+- O padrão de projeto utilizado é a Arquitetura em Camadas.
+- O banco de dados está configurado para usar o Entity Framework no modo Code-First, onde o banco é gerado a partir das classes de modelo. O banco de dados é populado ao rodar a aplicação conforme configurado na  pasta Data/ProductsDbContext.cs
 
 ### Products.API
-- Este é o projeto principal da API que gerencia produtos. Utiliza .NET 8 e o Entity Framework Core com o banco de dados SQLite.
+- Este é o projeto principal da API que gerencia produtos.
 - O CRUD consiste em:
   - Criar um produto;
   - Atualizar o produto já existente selecionando pelo id;
-  - Listar os produtos, podendo pesquisar pelo nome se desejar e ordenar por alguma das tabelas do banco (nome, valor, estoque). E também listar um produto específico procurando pelo id;
-  - Deletar um produto através do id.
+  - Listar os produtos, podendo pesquisar pelo nome e/ou ordenar por alguma das tabelas do banco (nome, valor, estoque);
+  - Exibir um produto específico procurando pelo id;
+  - Deletar um produto através do id;
   - A coluna de "valor" não permite valor negativo, já a coluna de "estoque" permite.
 
 ### Products.API.Test
 - Este é o projeto de testes unitários para a API. Utiliza o xUnit Test como framework de testes e in-memory database do Entity Framework Core para simular um banco de dados real.
-
 
 <br>
 
